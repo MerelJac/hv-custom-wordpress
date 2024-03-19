@@ -66,7 +66,41 @@ $term = get_queried_object();
                     ?>
                     <article <?php post_class(); ?>>
                         <div class="post-content">
-                            <?php the_content(); ?>
+                            <?php 
+                            // Check if ACF fields exist
+                            if (function_exists('get_field')) {
+                                // Check if book image field exists
+                                $book_image = get_field('book_image');
+                                if ($book_image) { ?>
+                                    <div class="book-container">
+                                        <img class="book-image" style="width: 100%;" src="<?php echo esc_url($book_image); ?>" alt="book-image" />
+                                        <div class="book-middle">
+                                            <div class="book-text title"><?php the_field('book_title'); ?></div>
+                                            <div class="book-text author"><?php the_field('book_author'); ?></div>
+                                            <?php 
+                                            // Check if illustrator field exists before displaying
+                                            $illustrator = get_field('book_illustrator');
+                                            if ($illustrator) { ?>
+                                                <div class="book-text illustrator"><?php the_field('book_illustrator'); ?></div>
+                                            <?php } ?>
+                                            <a href="<?php the_permalink(); ?>"><button class="book-button">Read More</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="book-details">
+                                        <div>Title: <span><?php the_field('book_title'); ?></span></div>
+                                        <div>Author: <span><?php the_field('book_author'); ?></span></div>
+                                        <p><?php the_field('book_details'); ?></p>
+                                        <a href="<?php the_field('library_link'); ?>"><button class="book-button-library">Check Availability</button></a>
+                                    </div>
+                                <?php } else {
+                                    // Render default content if book image field doesn't exist
+                                    the_content();
+                                }
+                            } else {
+                                // Render default content if ACF plugin is not active
+                                the_content();
+                            }
+                            ?>
                         </div>
                     </article>
                     <?php
@@ -74,6 +108,22 @@ $term = get_queried_object();
             else :
                 echo 'No posts found.';
             endif;
+            
+            
+
+            // if ($query->have_posts()) :
+            //     while ($query->have_posts()) : $query->the_post();
+            //         ?>
+            //         <article <?php post_class(); ?>>
+            //             <div class="post-content">
+            //                 <?php the_content(); ?>
+            //             </div>
+            //         </article>
+            //         <?php
+            //     endwhile;
+            // else :
+            //     echo 'No posts found.';
+            // endif;
             ?>
         </div>
     </div>
