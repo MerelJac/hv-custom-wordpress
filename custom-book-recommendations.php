@@ -20,16 +20,16 @@ while (have_posts()) : the_post();
             ?>
             <div class="book-details">
                 <?php if ($book_image) : ?>
-                    <img class="book-image" style="width: 100%;" src="<?php echo esc_url($book_image); ?>" alt="book-image" />
+                    <img class="book-image" style="width: 100%;" src="<?php the_field($book_image); ?>" alt="book-image" />
                 <?php endif; ?>
-                <div class="book-text title"><?php echo esc_html($book_title); ?></div>
-                <div class="book-text author"><?php echo esc_html($book_author); ?></div>
+                <div class="book-text title"><?php the_field($book_title); ?></div>
+                <div class="book-text author"><?php the_field($book_author); ?></div>
                 <?php if ($book_illustrator) : ?>
-                    <div class="book-text illustrator"><?php echo esc_html($book_illustrator); ?></div>
+                    <div class="book-text illustrator"><?php the_field($book_illustrator); ?></div>
                 <?php endif; ?>
-                <p><?php echo wp_kses_post($book_details); ?></p>
+                <p><?php echo the_field($book_details); ?></p>
                 <?php if ($library_link) : ?>
-                    <a href="<?php echo esc_url($library_link); ?>"><button class="book-button-library">Check Availability</button></a>
+                    <a href="<?php the_field($library_link); ?>"><button class="book-button-library">Check Availability</button></a>
                 <?php endif; ?>
             </div>
         <?php } else {
