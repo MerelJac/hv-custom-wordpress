@@ -1,11 +1,14 @@
 .book-details { 
     display: flex; 
     flex-direction: column; 
-    color: red;
 } 
 
 .book-button { display: none; }
 
 .page-header {
     display: none;
+}
+
+.book-image {
+    padding-bottom: 10px;
 }
