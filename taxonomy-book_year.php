@@ -73,7 +73,7 @@ $term = get_queried_object();
                                 $book_image = get_field('book_image');
                                 if ($book_image) { ?>
                                     <div class="book-container">
-                                        <img class="book-image" style="width: 100%;" src="<?php echo esc_url($book_image); ?>" alt="book-image" />
+                                        <img class="book-image" style="width: 100%;" src="<?php the_field('book_image'); ?>" alt="book-image" />
                                         <div class="book-middle">
                                             <div class="book-text title"><?php the_field('book_title'); ?></div>
                                             <div class="book-text author"><?php the_field('book_author'); ?></div>
@@ -108,22 +108,6 @@ $term = get_queried_object();
             else :
                 echo 'No posts found.';
             endif;
-            
-            
-
-            // if ($query->have_posts()) :
-            //     while ($query->have_posts()) : $query->the_post();
-            //         ?>
-            //         <article <?php post_class(); ?>>
-            //             <div class="post-content">
-            //                 <?php the_content(); ?>
-            //             </div>
-            //         </article>
-            //         <?php
-            //     endwhile;
-            // else :
-            //     echo 'No posts found.';
-            // endif;
             ?>
         </div>
     </div>

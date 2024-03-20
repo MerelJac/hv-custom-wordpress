@@ -64,13 +64,27 @@ if ($query->have_posts()) {
 
                     .col-text {
                         padding-left: 2rem;
+                        padding-top: 2rem;
                     }
 
+            
+                    .book-image {
+                        height: 500px;
+                    }
 
+                    .div-image {
+                        width: 100%;
+                        max-width: 300px;
+                    }
     
                     @media only screen and (max-width: 1100px) {
                         .book-image {
                             width: 250px;
+                            max-width: fit-content;
+                            max-height: fit-content;
+                            min-height: fit-content;
+                            /* min-height: 18vh;
+                            max-height: 40vh; */
                         }
                     }
 
@@ -81,6 +95,10 @@ if ($query->have_posts()) {
                     .col-text {
                         padding-left: 0px;
                     }
+
+                        .book-button-padding {
+                            text-align: center;
+                        }
 
                     }
                 </style>
@@ -107,27 +125,27 @@ if ($query->have_posts()) {
                     </div>
                 </div>
                 <section class="content-padding">
-                    <div class="book-button-padding">
-                        <a href="<?php echo site_url('/book_year/2022'); ?>"><button class="book-button-library">Back to Library</button></a>
-                    </div>
                     <div class="info">
-                        <div>
+                        <div class="div-image">
                             <?php if ($book_image) : ?>
                                 <img class="book-image" style="width: 100%;" src="<?php echo esc_url($book_image); ?>" alt="book-image" />
                             <?php endif; ?>
                         </div>
                         <section class="col-text">
                             <div>
-                                <div class="book-text author">Author: <?php echo esc_html($book_author); ?></div>
+                                <div class="book-text author"><strong>Author: </strong> <?php echo esc_html($book_author); ?></div>
                                 <?php if ($book_illustrator) : ?>
-                                    <div class="book-text illustrator">Illustrator: <?php echo esc_html($book_illustrator); ?></div>
+                                    <div class="book-text illustrator"> <strong>Illustrator: </strong> <?php echo esc_html($book_illustrator); ?></div>
                                 <?php endif; ?>
-                                <p class="detail-text"> Details: <?php echo wp_kses_post($book_details); ?></p>
+                                <p class="detail-text"> <strong>Details: </strong> <?php echo wp_kses_post($book_details); ?></p>
                             </div>
-                            <div class="book-details">
+                            <div class="book-details book-button-padding">
                                 <?php if ($library_link) : ?>
                                     <a href="<?php echo esc_url($library_link); ?>"><button class="book-button-library">Check Availability</button></a>
                                 <?php endif; ?>
+                                <div class="book-button-padding">
+                                <a href="<?php echo site_url('/book_year/2022'); ?>"><button class="book-button-library">&larr; Back to Library</button></a>
+                            </div>
                             </div>
                         </section>
                     </div>
