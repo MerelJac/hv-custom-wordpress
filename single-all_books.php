@@ -35,6 +35,10 @@ if ($query->have_posts()) {
                         padding-bottom: 3rem;
                     }
 
+                    .all_books {
+                        max-height: 100%;
+                    }
+
                     .book-button { display: none; }
 
                     .page-header {
@@ -53,7 +57,7 @@ if ($query->have_posts()) {
                         padding-bottom: 10px;
                         padding-top: 10px;
                     }
-                    .page-title-custom { 
+                    .page-title-custom {
                         width: 100vw;
                     }
 
@@ -70,6 +74,7 @@ if ($query->have_posts()) {
             
                     .book-image {
                         height: 500px;
+                        max-width: 300px;
                     }
 
                     .div-image {

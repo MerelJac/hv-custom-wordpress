@@ -18,7 +18,10 @@ $term = get_queried_object();
 
 
         <div class="col">
-            <h1 class="genre-text" style="border-bottom: 1px solid #197AA5;">Genres</h1>
+        <div class="genre-bar">
+            <h1 class="genre-text">Genres</h1>
+            <p onclick="toggleTagCloud()" class="hide-on-large">&#x2935;</p>
+            </div>
             <div class="tag-cloud-column" style="display: flex;
         flex-direction: column; padding-top: 10px !important;">
                 <?php
@@ -124,6 +127,13 @@ $term = get_queried_object();
         printWindow.document.close();
         printWindow.print();
     }
+    function toggleTagCloud() {
+        var tagCloud = document.querySelector('.tag-cloud-column');
+        var hideIcon = document.querySelector('.hide-on-large');
+        tagCloud.classList.toggle('active');
+        hideIcon.style.transform = tagCloud.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0deg)';
+    }
+
 </script>
 
 

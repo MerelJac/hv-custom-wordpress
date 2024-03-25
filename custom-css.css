@@ -45,7 +45,12 @@ font-size: 35px;
 padding-top: 15px;
 padding-bottom: 15px
 }
-
+.genre-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .title {
 text-transform: uppercase;
 border-bottom: 1px solid #197AA5;
@@ -95,6 +100,9 @@ gap: 10px;
 max-width: 1450px;
 }
 
+.hide-on-large{
+  display: none;
+}
 
 .books-container-padding {
 gap: 10px;
@@ -235,7 +243,7 @@ padding-top: 10px !important;
               opacity: 1;
               display: block;
               width: 100%;
-                max-width: 75px;
+              max-width: fit-content;
                 /* max-width: 19vw;
                 min-width: 19vw;  */
                 min-width: 100%;
@@ -272,6 +280,43 @@ padding-top: 10px !important;
       flex-direction: column !important;
   }
 
+  .books-container-padding {
+    padding-bottom: 5rem;
+  }
+
+  .hide-on-large {
+    display: flex;
+    margin-bottom: 0;
+    transition: transform 0.5s ease-out;
+  }
+
+  .tag-cloud-column {
+    opacity: 0;
+    height: 0;
+    transition: opacity 0.5s ease-out, opacity 0.5s ease-in;
+    overflow: hidden;
+}
+
+.tag-cloud-row {
+  justify-content: center;
+}
+.tag-cloud-column.active {
+    opacity: 1;
+    transition: opacity 0.5s ease-out, opacity 0.5s ease-in;
+    height: auto;
+}
+  .genre-bar {
+    border-bottom: 1px solid #197AA5;
+  }
+  .title {
+  border-bottom: none;
+  }
+
+  .book-text {
+    padding: 5px 0px;
+
+    }
+
 .col {
     padding-left: 30px;
     padding-right: 30px;
@@ -285,6 +330,7 @@ padding-top: 10px !important;
       object-fit: cover;
       min-width: 50%;
       max-width: 100%;
+      max-height: 57vh;
     }
   .masonry-grid, .books-row {
     display: flex;
